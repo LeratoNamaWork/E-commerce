@@ -36,7 +36,6 @@
       padding: 0 28px;
     }
 
-    /* Announcement Bar */
     .announcement-bar {
       background: var(--battle-dark);
       color: #e2f0da;
@@ -49,7 +48,6 @@
     .announcement-bar span { margin: 0 24px; display: inline-block; }
     .announcement-bar i { margin-right: 8px; color: var(--battle-lime); }
 
-    /* Header */
     .main-header {
       background: white;
       position: sticky;
@@ -115,7 +113,6 @@
       justify-content: center;
     }
 
-    /* Dropdown Menus */
     .dropdown-group {
       display: flex;
       gap: 30px;
@@ -156,7 +153,6 @@
     .dropdown-content a:hover { background: var(--battle-mint); }
     .dropdown:hover .dropdown-content { display: block; }
 
-    /* Product Sections */
     .product-section {
       margin: 48px 0 32px;
     }
@@ -195,8 +191,19 @@
       background: #f5faf0;
       padding: 35px 20px;
       text-align: center;
+      min-height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .product-img i { font-size: 3.5rem; color: var(--battle-green); transition: color 0.2s; }
+    .product-img img {
+      max-width: 100%;
+      max-height: 120px;
+      object-fit: contain;
+      border-radius: 12px;
+      transition: all 0.3s;
+    }
     .product-info { padding: 18px; }
     .product-title { font-weight: 800; font-size: 1.15rem; margin-bottom: 6px; }
     .product-brand { font-size: 0.75rem; color: #5b7c4a; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px; }
@@ -227,6 +234,16 @@
     .color-swatch:hover { transform: scale(1.15); }
     
     .price { font-weight: 800; font-size: 1.3rem; color: var(--battle-green); margin: 12px 0 10px; }
+    .bulk-price-tag {
+      display: inline-block;
+      background: #f0f7eb;
+      border-radius: 40px;
+      padding: 4px 16px;
+      font-size: 0.75rem;
+      color: #1f5e3a;
+      margin-left: 10px;
+      font-weight: 600;
+    }
     .add-to-cart-card {
       background: var(--battle-green);
       color: white;
@@ -242,7 +259,6 @@
     }
     .add-to-cart-card:hover { background: var(--battle-dark); }
 
-    /* Product Modal */
     .modal {
       display: none;
       position: fixed;
@@ -267,6 +283,8 @@
     .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
     .close-modal { font-size: 32px; cursor: pointer; font-weight: 300; }
     .modal-product-image { text-align: center; font-size: 5rem; margin: 20px 0; }
+    .modal-product-image img { max-width: 100%; max-height: 200px; object-fit: contain; border-radius: 16px; }
+    .modal-product-image i { font-size: 5rem; }
     .modal-colors-row {
       display: flex;
       gap: 15px;
@@ -326,7 +344,6 @@
     }
     .bulk-quote-btn:hover { background: var(--battle-green); color: white; }
 
-    /* CART SIDEBAR */
     .cart-overlay {
       display: none;
       position: fixed;
@@ -363,6 +380,7 @@
       border-bottom: 1px solid #f0f5ec;
     }
     .cart-item-icon { font-size: 2rem; width: 60px; text-align: center; }
+    .cart-item-icon img { max-width: 40px; max-height: 40px; object-fit: contain; }
     .cart-item-details { flex: 1; }
     .cart-item-name { font-weight: 600; }
     .cart-item-color { font-size: 0.8rem; color: #5b7c4a; }
@@ -418,7 +436,6 @@
       color: #6b8c5c;
     }
 
-    /* CHECKOUT MODAL */
     .checkout-modal {
       display: none;
       position: fixed;
@@ -482,7 +499,6 @@
     }
     .place-order-btn:hover { background: #b8942e; }
 
-    /* Bulk Panel */
     .bulk-panel {
       background: white;
       border-radius: 32px;
@@ -497,7 +513,6 @@
     }
     .full-width { grid-column: span 2; }
 
-    /* Toast */
     .toast {
       position: fixed;
       bottom: 30px;
@@ -511,7 +526,6 @@
       font-weight: 500;
     }
 
-    /* Footer */
     footer {
       background: #112710;
       color: #cde2c2;
@@ -529,7 +543,6 @@
 </head>
 <body>
 
-<!-- Announcement Bar -->
 <div class="announcement-bar">
   <span><i class="fas fa-gift"></i> Corporate gifting now available</span>
   <span><i class="fas fa-file-invoice"></i> Request a bulk quotation</span>
@@ -537,7 +550,6 @@
   <span><i class="fas fa-building"></i> Premium brand procurement for businesses</span>
 </div>
 
-<!-- Main Header -->
 <div class="main-header">
   <div class="container">
     <div class="header-row">
@@ -562,7 +574,6 @@
 </div>
 
 <div class="container">
-  <!-- Dropdowns -->
   <div class="dropdown-group">
     <div class="dropdown">
       <button class="dropbtn"><i class="fas fa-trademark"></i> Shop by Brand ▼</button>
@@ -574,25 +585,30 @@
     </div>
   </div>
 
-  <!-- Electronics Section -->
+  <!-- BULK OFFICE & ELECTRONICS SECTION -->
+  <div id="bulkElectronicsSection" class="product-section" style="background: #f0f9eb; padding: 20px 20px 10px; border-radius: 48px;">
+    <div class="section-header">
+      <h2><i class="fas fa-warehouse" style="color:var(--battle-green);"></i> Bulk Office & Electronics (10+ units)</h2>
+      <span class="see-more" data-section="bulk">See more →</span>
+    </div>
+    <div class="product-row" id="bulkElectronicsRow"></div>
+  </div>
+
   <div id="electronicsSection" class="product-section">
     <div class="section-header"><h2><i class="fas fa-microchip"></i> Electronics & ICT Devices</h2><span class="see-more" data-section="electronics">See more →</span></div>
     <div class="product-row" id="electronicsRow"></div>
   </div>
 
-  <!-- Corporate Gifts Section -->
   <div id="corporateGiftsSection" class="product-section">
     <div class="section-header"><h2><i class="fas fa-gift"></i> Corporate Gifts & Executive Collection</h2><span class="see-more" data-section="gifts">See more →</span></div>
     <div class="product-row" id="giftsRow"></div>
   </div>
 
-  <!-- Premium Appliances Section -->
   <div id="appliancesSection" class="product-section">
     <div class="section-header"><h2><i class="fas fa-blender"></i> Premium Appliances & Lifestyle</h2><span class="see-more" data-section="appliances">See more →</span></div>
     <div class="product-row" id="appliancesRow"></div>
   </div>
 
-  <!-- Bulk Orders Panel -->
   <div id="bulkOrderPanel" class="bulk-panel">
     <h2><i class="fas fa-chart-simple"></i> Business Bulk Orders</h2>
     <p style="margin: 10px 0 20px;">Request quantity-based pricing for 10+ units. Our team responds within 2 hours.</p>
@@ -625,7 +641,6 @@
   </div>
 </footer>
 
-<!-- Product Modal -->
 <div id="productModal" class="modal">
   <div class="modal-content">
     <div class="modal-header"><h2 id="modalTitle"></h2><span class="close-modal">&times;</span></div>
@@ -640,7 +655,6 @@
   </div>
 </div>
 
-<!-- Cart Sidebar -->
 <div id="cartOverlay" class="cart-overlay">
   <div class="cart-sidebar">
     <div class="cart-header">
@@ -657,7 +671,6 @@
   </div>
 </div>
 
-<!-- Checkout Modal -->
 <div id="checkoutModal" class="checkout-modal">
   <div class="checkout-content">
     <div class="modal-header"><h2><i class="fas fa-credit-card"></i> Checkout</h2><span class="close-modal" id="checkoutCloseBtn">&times;</span></div>
@@ -696,6 +709,15 @@
 
 <script>
   // ======================== PRODUCT DATABASE ========================
+  // Bulk office & electronics items (with real product images)
+  const bulkProducts = [
+    { id: 101, name: "HP LaserJet Pro M404n", brand: "HP", category: "bulk", price: 499, colors: ["White", "Gray"], colorHex: { "White": "#f0f0f0", "Gray": "#7a7a7a" }, specs: "Monochrome laser printer, 40ppm, 2.7\" touchscreen, Ethernet, 256MB, 1200x1200 dpi, duty cycle 80k pages", reviews: [{ name: "Bulk Buyer", stars: 5, text: "Great for office fleet, volume pricing was excellent." }], icon: "fa-print", image: "https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?w=300&h=200&fit=crop" },
+    { id: 102, name: "Dell OptiPlex 7010 SFF", brand: "Dell", category: "bulk", price: 899, colors: ["Black"], colorHex: { "Black": "#1a1a1a" }, specs: "Intel Core i7-13700, 16GB DDR5, 512GB SSD, Windows 11 Pro, 3yr warranty, small form factor", reviews: [{ name: "IT Director", stars: 5, text: "Deployed 50 units, solid performance and quiet." }], icon: "fa-desktop", image: "https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=300&h=200&fit=crop" },
+    { id: 103, name: "Logitech MK850 Performance", brand: "Logitech", category: "bulk", price: 129, colors: ["Black", "Graphite"], colorHex: { "Black": "#1a1a1a", "Graphite": "#4a4a4a" }, specs: "Wireless keyboard & mouse, rechargeable, 3 device pairing, multi-device flow, silent keys", reviews: [{ name: "Procurement Lead", stars: 4, text: "Staff love the comfort, bulk discount made it affordable." }], icon: "fa-keyboard", image: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=300&h=200&fit=crop" },
+    { id: 104, name: "Samsung 870 EVO 1TB SSD", brand: "Samsung", category: "bulk", price: 159, colors: ["Silver"], colorHex: { "Silver": "#c0c0c0" }, specs: "SATA III, 1TB, 560/530 MB/s read/write, 2.5\", 5 year warranty, 600 TBW", reviews: [{ name: "SysAdmin", stars: 5, text: "Reliable bulk storage upgrade for our workstations." }], icon: "fa-hdd", image: "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=300&h=200&fit=crop" }
+  ];
+
+  // Icon-based products (keep icons, show color change)
   const productsData = {
     electronics: [
       { id: 1, name: "MacBook Pro 14", brand: "Apple", category: "electronics", price: 1999, colors: ["Space Gray", "Silver"], colorHex: { "Space Gray": "#4a4a4a", "Silver": "#e0e4e8" }, specs: "M3 Pro chip (12-core), 16GB unified memory, 512GB SSD, Liquid Retina XDR display, 18hr battery", reviews: [{ name: "John D.", stars: 5, text: "Perfect for our executive team. Fast and reliable." }, { name: "Sarah K.", stars: 5, text: "Excellent build quality, corporate fleet ready." }], icon: "fa-laptop" },
@@ -717,12 +739,11 @@
     ]
   };
 
-  let allProducts = [...productsData.electronics, ...productsData.gifts, ...productsData.appliances];
+  let allProducts = [...productsData.electronics, ...productsData.gifts, ...productsData.appliances, ...bulkProducts];
   let currentModalProduct = null;
   let currentSelectedColor = null;
   let cart = [];
 
-  // Cart functions
   function updateCartBadge() {
     const badge = document.getElementById('cartBadge');
     const total = cart.reduce((sum, item) => sum + item.qty, 0);
@@ -746,7 +767,7 @@
     
     container.innerHTML = cart.map((item, index) => `
       <div class="cart-item">
-        <div class="cart-item-icon"><i class="fas ${item.icon}"></i></div>
+        <div class="cart-item-icon">${item.image ? `<img src="${item.image}" alt="${item.name}">` : `<i class="fas ${item.icon}"></i>`}</div>
         <div class="cart-item-details">
           <div class="cart-item-name">${item.name}</div>
           <div class="cart-item-color">${item.selectedColor} • ${item.brand}</div>
@@ -797,18 +818,17 @@
         brand: product.brand,
         price: product.price,
         icon: product.icon,
+        image: product.image || null,
         selectedColor: color,
         qty: 1
       });
     }
     renderCart();
     showToast(`${product.name} (${color}) added to cart`);
-    // Open cart automatically after adding
     document.getElementById('cartOverlay').style.display = 'flex';
   }
 
-  // Render product rows
-  function renderProductRow(containerId, productArray, sectionLimit = 4) {
+  function renderProductRow(containerId, productArray, sectionLimit = 4, showBulkTag = false) {
     const container = document.getElementById(containerId);
     if (!container) return;
     const showProducts = productArray.slice(0, sectionLimit);
@@ -816,10 +836,17 @@
       container.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:40px; background:#f9fef7; border-radius:28px;">No products match. <i class="fas fa-search"></i> Try another filter or contact our corporate team.</div>';
       return;
     }
-    container.innerHTML = showProducts.map(p => `
+    container.innerHTML = showProducts.map(p => {
+      const bulkPrice = (p.price * 0.85).toFixed(2);
+      const tagHtml = showBulkTag ? `<span class="bulk-price-tag">Bulk from R${bulkPrice}</span>` : `<span class="bulk-price-tag">Bulk from R${bulkPrice}</span>`;
+      // Use image if available, else use icon
+      const imageHtml = p.image 
+        ? `<img src="${p.image}" alt="${p.name}" style="max-width:100%; max-height:120px; object-fit:contain; border-radius:12px;" id="img-${p.id}">`
+        : `<i class="fas ${p.icon}" style="font-size:3.5rem; color:${p.colorHex[p.colors[0]] || '#1f5e3a'};" id="icon-${p.id}"></i>`;
+      return `
       <div class="product-card" data-product-id="${p.id}">
         <div class="product-img">
-          <i class="fas ${p.icon}" style="font-size:3.2rem; color:${p.colorHex[p.colors[0]] || '#1f5e3a'};" id="icon-${p.id}"></i>
+          ${imageHtml}
         </div>
         <div class="product-info">
           <div class="product-title">${p.name}</div>
@@ -830,13 +857,12 @@
               ${p.colors.map(c => `<div class="color-swatch" style="background:${p.colorHex[c]};" data-color="${c}" data-id="${p.id}"></div>`).join('')}
             </div>
           </div>
-          <div class="price">R${p.price}</div>
+          <div class="price">R${p.price} ${tagHtml}</div>
           <button class="add-to-cart-card" data-id="${p.id}"><i class="fas fa-cart-plus"></i> Add to Cart</button>
         </div>
       </div>
-    `).join('');
+    `}).join('');
 
-    // Color swatch preview
     showProducts.forEach(p => {
       const swatches = document.querySelectorAll(`.color-swatch[data-id="${p.id}"]`);
       swatches.forEach(sw => {
@@ -844,13 +870,15 @@
           e.stopPropagation();
           const color = sw.getAttribute('data-color');
           const hex = p.colorHex[color];
+          // Update icon color or image border
           const iconElem = document.getElementById(`icon-${p.id}`);
           if (iconElem) iconElem.style.color = hex;
+          const imgElem = document.getElementById(`img-${p.id}`);
+          if (imgElem) imgElem.style.border = `4px solid ${hex}`;
         });
       });
     });
 
-    // Add to Cart button
     document.querySelectorAll(`#${containerId} .add-to-cart-card`).forEach(btn => {
       btn.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -863,7 +891,6 @@
       });
     });
 
-    // Click on product card opens modal
     document.querySelectorAll(`#${containerId} .product-card`).forEach(card => {
       card.addEventListener('click', (e) => {
         if (e.target.classList.contains('add-to-cart-card') || e.target.classList.contains('color-swatch')) return;
@@ -874,19 +901,28 @@
     });
   }
 
-  // Open full modal
   function openFullModal(product) {
     currentModalProduct = product;
     currentSelectedColor = product.colors[0];
     document.getElementById('modalTitle').innerHTML = `${product.name} <span style="font-size:0.9rem; color:#5b7c4a;">by ${product.brand}</span>`;
     const initialHex = product.colorHex[currentSelectedColor];
-    document.getElementById('modalImage').innerHTML = `<i class="fas ${product.icon}" style="font-size:5rem; color:${initialHex};"></i>`;
-    document.getElementById('modalPrice').innerHTML = `R${product.price} <span style="font-size:0.9rem;">(excl. VAT, bulk discounts for 10+)</span>`;
+    // Show image or icon in modal
+    const imageHtml = product.image 
+      ? `<img src="${product.image}" alt="${product.name}" style="max-width:100%; max-height:200px; object-fit:contain; border-radius:16px;" id="modal-img">`
+      : `<i class="fas ${product.icon}" style="font-size:5rem; color:${initialHex};" id="modal-icon"></i>`;
+    document.getElementById('modalImage').innerHTML = imageHtml;
+    // Apply initial color to image border if image
+    if (product.image) {
+      const img = document.getElementById('modal-img');
+      if (img) img.style.border = `4px solid ${initialHex}`;
+    }
+    const bulkPrice = (product.price * 0.85).toFixed(2);
+    document.getElementById('modalPrice').innerHTML = `R${product.price} <span style="font-size:0.9rem;">(excl. VAT, bulk 10+ : R${bulkPrice} each)</span>`;
     
     document.getElementById('modalSpecs').innerHTML = `
       <li><strong>Brand:</strong> ${product.brand}</li>
       <li><strong>Full Specifications:</strong> ${product.specs}</li>
-      <li><strong>Bulk Eligibility:</strong> Volume pricing from 10 units</li>
+      <li><strong>Bulk Eligibility:</strong> Volume pricing from 10 units (15% discount)</li>
       <li><strong>Corporate Warranty:</strong> 3 years for bulk orders</li>
     `;
     
@@ -909,8 +945,11 @@
       sw.addEventListener('click', () => {
         currentSelectedColor = color;
         const newHex = product.colorHex[color];
+        // Update modal image
         const imgIcon = document.querySelector('#modalImage i');
         if (imgIcon) imgIcon.style.color = newHex;
+        const imgElem = document.querySelector('#modalImage img');
+        if (imgElem) imgElem.style.border = `4px solid ${newHex}`;
         document.querySelectorAll('#modalColors .modal-color-swatch').forEach(s => s.style.border = '3px solid white');
         sw.style.border = '3px solid var(--battle-green)';
       });
@@ -920,7 +959,6 @@
     document.getElementById('productModal').style.display = 'flex';
   }
 
-  // Toast
   function showToast(message) {
     const toast = document.getElementById('toastMsg');
     toast.innerHTML = `<i class="fas fa-check-circle"></i> ${message}`;
@@ -928,7 +966,6 @@
     setTimeout(() => toast.style.display = 'none', 2500);
   }
 
-  // Filtering
   function filterProductsByBrand(brand) {
     const filtered = brand === 'all' ? allProducts : allProducts.filter(p => p.brand === brand);
     updateAllRows(filtered);
@@ -938,23 +975,25 @@
     else if (cat === 'Electronics & ICT') updateAllRows(productsData.electronics);
     else if (cat === 'Corporate Gifts') updateAllRows(productsData.gifts);
     else if (cat === 'Premium Appliances') updateAllRows(productsData.appliances);
+    else if (cat === 'Bulk Office') updateAllRows(bulkProducts);
   }
   function updateAllRows(filteredList) {
     const elec = filteredList.filter(p => productsData.electronics.some(ep => ep.id === p.id));
     const gifts = filteredList.filter(p => productsData.gifts.some(gp => gp.id === p.id));
     const apps = filteredList.filter(p => productsData.appliances.some(ap => ap.id === p.id));
+    const bulk = filteredList.filter(p => bulkProducts.some(bp => bp.id === p.id));
     renderProductRow('electronicsRow', elec, 4);
     renderProductRow('giftsRow', gifts, 4);
     renderProductRow('appliancesRow', apps, 4);
+    renderProductRow('bulkElectronicsRow', bulk, 4, true);
   }
 
-  // Populate dropdowns
   function populateDropdowns() {
     const brandSet = new Set(); allProducts.forEach(p => brandSet.add(p.brand));
     const brandDropdown = document.getElementById('brandDropdown');
     const categoryDropdown = document.getElementById('categoryDropdown');
     brandDropdown.innerHTML = '<a data-brand="all">All Brands</a>' + Array.from(brandSet).map(b => `<a data-brand="${b}">${b}</a>`).join('');
-    categoryDropdown.innerHTML = '<a data-cat="all">All Categories</a><a data-cat="Electronics & ICT">Electronics & ICT</a><a data-cat="Corporate Gifts">Corporate Gifts</a><a data-cat="Premium Appliances">Premium Appliances</a>';
+    categoryDropdown.innerHTML = '<a data-cat="all">All Categories</a><a data-cat="Electronics & ICT">Electronics & ICT</a><a data-cat="Corporate Gifts">Corporate Gifts</a><a data-cat="Premium Appliances">Premium Appliances</a><a data-cat="Bulk Office">Bulk Office & Electronics</a>';
     
     document.querySelectorAll('#brandDropdown a').forEach(link => {
       link.addEventListener('click', () => filterProductsByBrand(link.getAttribute('data-brand')));
@@ -964,7 +1003,6 @@
     });
   }
 
-  // Search
   document.getElementById('globalSearch').addEventListener('input', (e) => {
     const term = e.target.value.toLowerCase();
     if (term.length < 2) { updateAllRows(allProducts); return; }
@@ -972,7 +1010,6 @@
     updateAllRows(filtered);
   });
 
-  // Modal controls
   document.querySelector('.close-modal').onclick = () => document.getElementById('productModal').style.display = 'none';
   window.onclick = (e) => { if (e.target === document.getElementById('productModal')) document.getElementById('productModal').style.display = 'none'; };
   
@@ -988,7 +1025,6 @@
     if (currentModalProduct) document.getElementById('bulkProduct').value = currentModalProduct.name;
   };
 
-  // Cart controls
   document.getElementById('cartOpenBtn').onclick = (e) => {
     e.preventDefault();
     document.getElementById('cartOverlay').style.display = 'flex';
@@ -999,12 +1035,10 @@
     if (e.target === document.getElementById('cartOverlay')) document.getElementById('cartOverlay').style.display = 'none';
   };
 
-  // Checkout
   document.getElementById('checkoutBtn').onclick = () => {
     if (cart.length === 0) { showToast('Your cart is empty'); return; }
     document.getElementById('cartOverlay').style.display = 'none';
     document.getElementById('checkoutModal').style.display = 'flex';
-    // Update checkout totals
     const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
     const vat = subtotal * 0.15;
     const total = subtotal + vat;
@@ -1017,7 +1051,6 @@
     if (e.target === document.getElementById('checkoutModal')) document.getElementById('checkoutModal').style.display = 'none';
   };
 
-  // Payment method selection
   document.querySelectorAll('.payment-option').forEach(opt => {
     opt.addEventListener('click', () => {
       document.querySelectorAll('.payment-option').forEach(o => o.classList.remove('selected'));
@@ -1026,7 +1059,6 @@
     });
   });
 
-  // Checkout form submit
   document.getElementById('checkoutForm').addEventListener('submit', (e) => {
     e.preventDefault();
     showToast('✅ Order placed successfully! Our team will contact you within 2 hours to confirm.');
@@ -1035,7 +1067,6 @@
     renderCart();
   });
 
-  // Navigation
   document.getElementById('bulkNavBtn').onclick = (e) => { e.preventDefault(); document.getElementById('bulkOrderPanel').scrollIntoView({ behavior: 'smooth' }); };
   document.getElementById('quoteNavBtn').onclick = (e) => { e.preventDefault(); document.getElementById('bulkOrderPanel').scrollIntoView({ behavior: 'smooth' }); };
   document.getElementById('whatsappBtn').onclick = (e) => { e.preventDefault(); showToast("WhatsApp: +27 87 138 6656 | Our corporate team is online 8am-5pm SAST."); };
@@ -1050,18 +1081,17 @@
     document.getElementById('bulkLocation').value = ''; document.getElementById('bulkSpecs').value = ''; document.getElementById('bulkDeliveryDate').value = '';
   };
 
-  // See more
   document.querySelectorAll('.see-more').forEach(link => {
     link.addEventListener('click', () => showToast("Full catalog available. Contact corporate team for complete product list and bulk pricing."));
   });
 
-  // Footer links
   document.getElementById('footerShopBrand').onclick = (e) => { e.preventDefault(); document.querySelector('.dropbtn').scrollIntoView({ behavior: 'smooth' }); };
   document.getElementById('footerShopCategory').onclick = (e) => { e.preventDefault(); document.querySelectorAll('.dropbtn')[1].scrollIntoView({ behavior: 'smooth' }); };
   document.getElementById('footerGifting').onclick = (e) => { e.preventDefault(); document.getElementById('corporateGiftsSection').scrollIntoView({ behavior: 'smooth' }); };
   document.getElementById('footerBulk').onclick = (e) => { e.preventDefault(); document.getElementById('bulkOrderPanel').scrollIntoView({ behavior: 'smooth' }); };
 
   // Initial render
+  renderProductRow('bulkElectronicsRow', bulkProducts, 4, true);
   renderProductRow('electronicsRow', productsData.electronics, 4);
   renderProductRow('giftsRow', productsData.gifts, 4);
   renderProductRow('appliancesRow', productsData.appliances, 4);
